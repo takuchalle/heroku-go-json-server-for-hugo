@@ -2,7 +2,7 @@
 	"comment": "",
 	"ignore": "test",
 	"package": [],
-	"rootPath": "github.com/takuyaohashi/heroku-go-json-server"
+	"rootPath": "github.com/takuyaohashi/heroku-go-json-server",
 
 	"heroku": {
 		"install" : [ "./..." ],
