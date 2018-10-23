@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -27,9 +26,16 @@ func ogpHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	og, err := ogp.Fetch(url)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	og = og.ToAbsURL()
-	b, err := json.MarshalIndent(og, "", "\t")
-	fmt.Fprintf(w, "%+v", string(b))
+	js, err := json.MarshalIndent(og, "", "\t")
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
