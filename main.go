@@ -1,10 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	ogp "github.com/otiai10/opengraph"
 )
 
 func main() {
@@ -13,10 +16,20 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/api/ogp", ogpHandler)
 	http.ListenAndServe(":"+port, nil)
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
+func ogpHandler(w http.ResponseWriter, r *http.Request) {
+	url := r.FormValue("url")
+	if len(url) == 0 {
+		return
+	}
+	og, err := ogp.Fetch(url)
+	if err != nil {
+		return
+	}
+	og = og.ToAbsURL()
+	b, err := json.MarshalIndent(og, "", "\t")
+	fmt.Fprintf(w, "%+v", string(b))
 }
