@@ -3,4 +3,8 @@
 	"ignore": "test",
 	"package": [],
 	"rootPath": "github.com/takuyaohashi/heroku-go-json-server"
+
+	"heroku": {
+	    "goVersion": "go1.11.1"
+	},
 }
