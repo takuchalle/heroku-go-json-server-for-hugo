@@ -1,22 +1,22 @@
 package main
 
 import (
-    "net/http"
-    "os"
-
-    "github.com/labstack/echo"
-    "github.com/labstack/echo/middleware"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
 )
 
 func main() {
-    // Echo instance
-    e := echo.New()
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
-    e.Use(middleware.Logger())
-    e.Use(middleware.Recover())
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":"+port, nil)
+}
 
-    e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!\n")
-	})
-	e.Start(os.Getenv("PORT"))
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
 }
