@@ -1,11 +1,31 @@
 {
 	"comment": "",
-	"ignore": "test",
-	"package": [],
-	"rootPath": "github.com/takuyaohashi/heroku-go-json-server",
-
 	"heroku": {
-		"install" : [ "./..." ],
-	    "goVersion": "go1.11.1"
-	}
+		"goVersion": "go1.11.1",
+		"install": [
+			"./..."
+		]
+	},
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "hvvDC1PP/d/pLjl8tk9IB6TvEWo=",
+			"path": "github.com/otiai10/opengraph",
+			"revision": "1393ea7772eb4f8f2d9c5998033ae92950fc3d01",
+			"revisionTime": "2018-03-04T06:57:43Z"
+		},
+		{
+			"checksumSHA1": "UrM9Sbp5q0sBFxqb5iMhqiPpXII=",
+			"path": "golang.org/x/net/html",
+			"revision": "04a2e542c03f1d053ab3e4d6e5abcd4b66e2be8e",
+			"revisionTime": "2018-10-17T11:24:37Z"
+		},
+		{
+			"checksumSHA1": "xwhqe/igHQrY3IhqDwzo6j7qpm8=",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "04a2e542c03f1d053ab3e4d6e5abcd4b66e2be8e",
+			"revisionTime": "2018-10-17T11:24:37Z"
+		}
+	],
+	"rootPath": "github.com/takuyaohashi/heroku-go-json-server"
 }
