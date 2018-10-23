@@ -1,0 +1,1 @@
+web: heroku-go-json-server
