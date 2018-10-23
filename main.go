@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"log"
 	"net/http"
 	"os"
@@ -22,6 +23,7 @@ func main() {
 func ogpHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.FormValue("url")
 	if len(url) == 0 {
+		http.Error(w, errors.New("url query must be set").Error(), http.StatusInternalServerError)
 		return
 	}
 	og, err := ogp.Fetch(url)
