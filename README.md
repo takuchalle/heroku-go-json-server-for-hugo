@@ -3,8 +3,8 @@
 ## Usage on Heroku
 
 ```
-$ go get github.com/takuyaohashi/heroku-go-json-server-for-hugo
-$ cd $GOPATH/src/github.com/takuyaohashi/heroku-go-json-server-for-hugo
+$ go get github.com/takuchalle/heroku-go-json-server-for-hugo
+$ cd $GOPATH/src/github.com/takuchalle/heroku-go-json-server-for-hugo
 $ heroku login
 $ heroku create
 $ git push heroku master
@@ -14,8 +14,8 @@ And access `[your-own-herokuapp].herokuapp.com/api/ogp?url=https://hogehoge.com`
 ## Usage local
 
 ```
-$ go get github.com/takuyaohashi/heroku-go-json-server-for-hugo
-$ cd $GOPATH/src/github.com/takuyaohashi/heroku-go-json-server-for-hugo
+$ go get github.com/takuchalle/heroku-go-json-server-for-hugo
+$ cd $GOPATH/src/github.com/takuchalle/heroku-go-json-server-for-hugo
 $ export PORT=1333
 $ go run main.go
 ```
